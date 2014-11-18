@@ -74,7 +74,7 @@ public class TimeCommand implements CommandExecutor {
             this.config.setWorldLock( targetWorld, lock );
             targetWorld.setTime( newTime );
 
-            sender.sendMessage( "Time of world '" + targetWorld.getWorldName() + "' set to " + newTime + "." );
+            sender.sendMessage( "Time of world '" + targetWorld.getWorldName() + "' " + ( lock ? "locked" : "set" ) + " to " + newTime + "." );
         } catch ( final NumberFormatException e ) {
             sender.sendMessage( "Usage: /" + label + " [world] <time 0-360|day|night>" );
         } catch ( final IllegalArgumentException e ) {
