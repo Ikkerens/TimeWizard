@@ -13,10 +13,8 @@ public class TimeHandler implements Listener {
 
     @EventHandler
     public void onWorldTime( final WorldTimeEvent event ) {
-        System.out.println( event.getWorld().getWorldName() + " set time to " + event.getTime() );
         if ( this.config.isWorldLocked( event.getWorld() ) ) {
             event.setCancelled( true );
-            System.out.println("Cancelled");
         }
     }
 }
