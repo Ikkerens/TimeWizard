@@ -13,7 +13,7 @@ public class TimeWizPlugin extends MBServerPlugin implements Listener {
         final Config config = this.getConfig();
         this.saveConfig();
 
-        this.getPluginManager().registerCommand( "settime", new String[] { "time" }, new TimeCommand( config ) );
+        this.getPluginManager().registerCommand( "settime", new String[] { "time" }, new TimeCommand( config, this.getServer() ) );
         this.getPluginManager().registerEventHandler( new TimeHandler( config ) );
         this.getPluginManager().registerEventHandler( this );
     }

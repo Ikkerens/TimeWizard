@@ -3,12 +3,11 @@ package com.ikkerens.timewiz;
 import java.util.HashMap;
 import java.util.Map;
 
-import com.mbserver.Minebuilder;
-import com.mbserver.game.Player;
-import com.mbserver.game.world.World;
-
 import com.mbserver.api.CommandExecutor;
 import com.mbserver.api.CommandSender;
+import com.mbserver.api.Server;
+import com.mbserver.api.game.Player;
+import com.mbserver.api.game.World;
 
 public class TimeCommand implements CommandExecutor {
     private static final Map< String, Float > PRESETS;
@@ -20,9 +19,11 @@ public class TimeCommand implements CommandExecutor {
     }
 
     private final Config                      config;
+    private final Server                      server;
 
-    public TimeCommand( final Config config ) {
+    public TimeCommand( final Config config, final Server server ) {
         this.config = config;
+        this.server = server;
     }
 
     @Override
@@ -50,7 +51,7 @@ public class TimeCommand implements CommandExecutor {
             if ( it == args.length )
                 throw new IllegalArgumentException();
 
-            World targetWorld = Minebuilder.getServer().getWorld( args[ ++it ] );
+            World targetWorld = this.server.getWorld( args[ ++it ] );
             if ( targetWorld == null ) {
                 if ( !( sender instanceof Player ) ) {
                     sender.sendMessage( "Needs a world specified or executed as a player." );
