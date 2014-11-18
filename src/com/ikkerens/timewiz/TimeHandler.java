@@ -1,11 +1,11 @@
 package com.ikkerens.timewiz;
 
-import com.mbserver.api.events.Listener;
 import com.mbserver.api.events.EventHandler;
+import com.mbserver.api.events.Listener;
 import com.mbserver.api.events.WorldTimeEvent;
 
 public class TimeHandler implements Listener {
-    private Config config;
+    private final Config config;
 
     public TimeHandler( final Config config ) {
         this.config = config;
@@ -13,8 +13,7 @@ public class TimeHandler implements Listener {
 
     @EventHandler
     public void onWorldTime( final WorldTimeEvent event ) {
-        if ( this.config.isWorldLocked( event.getWorld() ) ) {
+        if ( this.config.isWorldLocked( event.getWorld() ) )
             event.setCancelled( true );
-        }
     }
 }

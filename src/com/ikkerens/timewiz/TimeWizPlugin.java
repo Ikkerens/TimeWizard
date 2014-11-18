@@ -20,7 +20,7 @@ public class TimeWizPlugin extends MBServerPlugin implements Listener {
 
     @EventHandler
     public void onSave( final WorldSaveEvent event ) {
-        if ( event == null || event.getWorld() == this.getServer().getMainWorld() )
+        if ( ( event == null ) || ( event.getWorld() == this.getServer().getMainWorld() ) )
             this.onDisable();
     }
 

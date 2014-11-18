@@ -19,7 +19,7 @@ public class TimeCommand implements CommandExecutor {
         PRESETS.put( "night", 270f );
     }
 
-    private Config                            config;
+    private final Config                      config;
 
     public TimeCommand( final Config config ) {
         this.config = config;
@@ -41,9 +41,9 @@ public class TimeCommand implements CommandExecutor {
 
         boolean lock = false;
         // Check if the lock parameter is present
-        if ( args[ ++it ].equalsIgnoreCase( "-l" ) ) {
+        if ( args[ ++it ].equalsIgnoreCase( "-l" ) )
             lock = true;
-        } else
+        else
             it--;
 
         try {
